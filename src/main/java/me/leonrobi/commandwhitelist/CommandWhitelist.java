@@ -84,8 +84,16 @@ public class CommandWhitelist extends JavaPlugin implements Listener {
         return groups;
     }
 
+    private boolean hasBypass(Player player) {
+        return player.isOp() || player.hasPermission("commandwhitelist.bypass");
+    }
+
     @EventHandler
     public void onCommandTab(PlayerCommandSendEvent event) {
+        if (hasBypass(event.getPlayer())) {
+            return;
+        }
+
         HashSet<String> groups = findGroups(event.getPlayer());
         HashSet<String> commands = new HashSet<>();
 
@@ -102,6 +110,11 @@ public class CommandWhitelist extends JavaPlugin implements Listener {
     @EventHandler
     public void onPlayerCommandPreProcess(PlayerCommandPreprocessEvent event) {
         Player player = event.getPlayer();
+
+        if (hasBypass(player)) {
+            return;
+        }
+
         HashSet<String> groups = findGroups(player);
         HashSet<String> commands = new HashSet<>();
 
