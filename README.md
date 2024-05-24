@@ -37,9 +37,9 @@ groups:
 
 ```
 
-CommandWhitelist. ( group name )
-Commandwhitelist.cwreload
-Commandwhitelist.bypass
+commandWhitelist. ( group name )
+commandwhitelist.cwreload
+commandwhitelist.bypass
 
 ```
 ### Folia inquisitors
